@@ -11,20 +11,25 @@ ENDFOREACH(flag)
 
 
 SET(CMAKE_BUILD_TYPE "Debug")
-SET(CMAKE_C_FLAGS_DEBUG "${CFLAGS} ${EXTRA_FLAGS}")
+SET(CMAKE_C_FLAGS_DEBUG "${CFLAGS} ${EXTRA_FLAGS} ")
 SET(CMAKE_C_FLAGS_RELEASE "${CFLAGS} ${EXTRA_FLAGS}")
 
-aux_source_directory(. DIR_SRCS)
-message("DIR_SRC: ${DIR_SRCS}")
-add_subdirectory(lvgl)
-add_subdirectory(lv_drivers)
-add_subdirectory(lv_demos)
 
+#aux_source_directory(. DIR_SRCS)
+#add_subdirectory(lvgl)
+#add_subdirectory(lv_drivers)
+#add_subdirectory(lv_demos)
+include_directories(.)
 include_directories(./lvgl/)
 include_directories(./lv_drivers/)
 include_directories(./lv_demos/src/lv_demo_music/)
 include_directories(./lv_demos/src/lv_demo_widgets/)
 include_directories(./lv_demos/src/lv_demo_benchmark/)
+
+aux_source_directory(. DIR_SRCS)
+add_subdirectory(lvgl)
+add_subdirectory(lv_drivers)
+add_subdirectory(lv_demos)
 
 add_executable(lvgl_prj  ${DIR_SRCS})
 
